@@ -5,7 +5,8 @@
         <li>{{ a }}</li>
     {% endfor %}
 </ul>
+<br/>
 <form method="post" action="{% url 'detail' %}">
   <input type="text" name="movie" placeholder="movie"><br>
-  <input type="submit" value="detail">
+  <input type="submit" value="Get actors of this movie">
 </form>

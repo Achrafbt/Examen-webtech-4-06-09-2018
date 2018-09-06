@@ -36,7 +36,7 @@ def index(request):
 
 @csrf_exempt
 def detail(request):
-	movie_name = request.POST.get('movie').title();
+	movie_name = request.POST.get('movie', '').title();
 	movie_list = r.keys('movie:*')
 	actors = []
 	for a in movie_list:
@@ -45,4 +45,5 @@ def detail(request):
 			actors_id = r.keys('actors:' + movie_id)
 	for q in actors_id:
 		actors.append(r.get(q))
+		
 	return render(request, 'movies/detail.html', {'movie': movie_name, 'actors': actors})
