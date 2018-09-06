@@ -19,5 +19,5 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.index, name='index'),
-	url(r'^(?P<movie_name>[A-z 0-9&.-]+)/$', views.detail, name='detail'),
+	url(r'^detail/$', views.detail, name='detail'),
 ]

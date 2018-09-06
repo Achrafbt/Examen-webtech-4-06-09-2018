@@ -5,6 +5,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, Http404
 from django.template import RequestContext, loader
 from django.views import generic
+from django.views.decorators.csrf import csrf_exempt
 
 import redis
 
@@ -33,7 +34,9 @@ def index(request):
 		movie_names.append(r.get(a))
 	return render(request, 'movies/index.html', {'movies': movie_names})
 
-def detail(request, movie_name):
+@csrf_exempt
+def detail(request):
+	movie_name = request.POST.get('movie').title();
 	movie_list = r.keys('movie:*')
 	actors = []
 	for a in movie_list:
