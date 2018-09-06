@@ -20,11 +20,7 @@ public class JokeController {
        
    @RequestMapping("/joke")
    public String joke(@RequestParam("firstname") String firstName, @RequestParam("lastname") String lastName, Model model) {
-	   URL jokeUrl = new URL("http://api.icndb.com/jokes/random?firstname=" + firstName + "&lastname=" + lastName);
-	   InputStreamReader jokez = new InputStreamReader(jokeUrl);
-	   BufferedReader in = new BufferedReader(
-               new InputStreamReader(jokez));
-
+	   String jokeUrl = "http://api.icndb.com/jokes/random?firstname=" + firstName + "&lastname=" + lastName;
 	   String inputLine;
 	   
 	   return "";
